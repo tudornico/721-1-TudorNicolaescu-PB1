@@ -13,6 +13,7 @@ public class Offer {
     }
 
     public Offer(String line){
+        // we split the file
         String[] fields = line.split("&");
         if (fields.length != 6)
             throw new RuntimeException("Invalid Line!");
@@ -21,6 +22,7 @@ public class Offer {
         price = Double.parseDouble(fields[2]);
         VAT = Double.parseDouble(fields[3]);
         address = fields[4];
+        //and we create the switch case we need
         switch (fields[5]){
             case "Zurich" -> place = Place.ZURICH;
             case "St. Gallen" -> place = Place.ST_GALLEN;
@@ -33,7 +35,7 @@ public class Offer {
 
     public double getFinalPrice(){
         return price + price * VAT / 100;
-    }
+    } // calculate the price with the TVA
 
     public String getFileString(){
         String placeString = "";
